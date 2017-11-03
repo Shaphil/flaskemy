@@ -1,10 +1,30 @@
 <!doctype html>
 <head>
-    <title>Hello world</title>
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div style="text-align:center">
-        <h1>Hello World</h1>
-        <p>Hello beautiful world</p>
-    </div>
+<div class="container">
+    <h3>Tasks List</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Task ID</th>
+            <th>Task Name</th>
+            <th>Completion Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.date.strftime('%Y-%m-%d') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 </body>
