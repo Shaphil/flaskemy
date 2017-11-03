@@ -1,1 +1,1 @@
-from flasky import app
+from flaskemy import app
