@@ -17,4 +17,4 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 db = SQLAlchemy(app)
 
-import flaskemy.views
+import flaskemy.views.general
