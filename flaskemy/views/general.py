@@ -8,7 +8,7 @@ from flaskemy.models import Task
 def index():
     if request.method == 'POST':
         # Add validity check for task name
-        task = Task(name=request.form['name'])
+        task = Task(name=request.form['task_name'])
         db.session.add(task)
         db.session.commit()
 
