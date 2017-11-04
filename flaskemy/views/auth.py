@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, session
 
 from flaskemy import app, db
 from flaskemy.models import User, Task
@@ -24,6 +24,7 @@ def login():
         password = request.form['user_password']
         user = User.query.filter_by(name=name).first()
         if user and password == user.password:
+            session['user'] = user
             tasks = Task.query.filter_by(user_id=user.id).all()
             return render_template('index.html', tasks=tasks)
 
