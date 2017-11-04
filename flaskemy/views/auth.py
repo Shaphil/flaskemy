@@ -27,4 +27,7 @@ def login():
             tasks = Task.query.filter_by(user_id=user.id).all()
             return render_template('index.html', tasks=tasks)
 
+        error = 'Invalid username/password'
+        return render_template('login.html', error=error)
+
     return render_template('login.html')
