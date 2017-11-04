@@ -1,12 +1,5 @@
-<!doctype html>
-<head>
-    <title>Task Manager</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-<div class="container">
+{% extends "layout.html" %}
+{% block content %}
     <h1 style="text-align: center">Task Manager</h1>
     <br>
     <br>
@@ -37,5 +30,4 @@
         {% endfor %}
         </tbody>
     </table>
-</div>
-</body>
+{% endblock %}
