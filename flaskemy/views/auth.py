@@ -1,3 +1,4 @@
+import hashlib
 from flask import render_template, request, session
 
 from flaskemy import app, db
@@ -9,7 +10,7 @@ def register():
     if request.method == 'POST':
         name = request.form['user_name']
         email = request.form['user_email']
-        password = request.form['user_password']
+        password = get_md5_hash(request.form['user_password'])
         user = User(name=name, email=email, password=password)
         db.session.add(user)
         db.session.commit()
@@ -21,7 +22,7 @@ def register():
 def login():
     if request.method == 'POST':
         name = request.form['user_name']
-        password = request.form['user_password']
+        password = get_md5_hash(request.form['user_password'])
         user = User.query.filter_by(name=name).first()
         if user and password == user.password:
             logged_in_user = {'name': user.name, 'id': user.id}
@@ -33,3 +34,9 @@ def login():
         return render_template('login.html', error=error)
 
     return render_template('login.html')
+
+
+def get_md5_hash(password):
+    h = hashlib.md5()
+    h.update(password.encode('utf-8'))
+    return h.hexdigest()
