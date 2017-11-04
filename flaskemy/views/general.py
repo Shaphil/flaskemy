@@ -11,12 +11,11 @@ def index():
         user = session.get('user')
         if request.method == 'POST':
             # Add validity check for task name
-            task = Task(name=request.form['task_name'], user_id=user.id)
+            task = Task(name=request.form['task_name'], user_id=user['id'])
             db.session.add(task)
             db.session.commit()
 
-        tasks = Task.query.filter_by(user_id=user.id).all()
+        tasks = Task.query.filter_by(user_id=user['id']).all()
         return render_template('index.html', tasks=tasks)
 
     return render_template('index.html')
-
