@@ -9,6 +9,20 @@
 </head>
 <body>
 <div class="container">
+    <div class="navbar">
+        <div class="container-fluid">
+            <div class="nav navbar-nav navbar-right">
+                {% if session.user %}
+                    <a href="/logout" class="btn btn-danger navbar-btn" role="button">Logout</a>
+                {% else %}
+                    <a href="/login" class="btn btn-success navbar-btn" role="button">Login</a>
+                    <a href="/register" class="btn btn-info navbar-btn" role="button">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
     {% block content %}{% endblock %}
 </div>
 </body>
