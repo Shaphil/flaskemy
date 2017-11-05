@@ -1,9 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
+    <div class="">
+    {% if session.user %}
+        <a href="/logout" class="btn btn-danger" role="button">Logout</a>
+    {% else %}
+        <a href="/login" class="btn btn-success" role="button">Login</a>
+        <a href="/register" class="btn btn-info" role="button">Register</a>
+    {% endif %}
+    </div>
     <h1 style="text-align: center">Task Logger</h1>
     <br>
     <br>
-    <form method="post">
+    <form action="/" method="post">
         <div class="input-group">
             <input type="text" name="task_name" class="form-control" placeholder="New Task">
             <span class="input-group-btn">

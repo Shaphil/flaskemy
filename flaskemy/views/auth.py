@@ -40,3 +40,9 @@ def get_md5_hash(password):
     h = hashlib.md5()
     h.update(password.encode('utf-8'))
     return h.hexdigest()
+
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return render_template('login.html')
